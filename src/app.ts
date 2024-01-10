@@ -8,6 +8,8 @@ import videoRoutes from './routes/videos.routes'
 const app = express();
 
 app.set('puerto', config.PUERTO);
+app.set('ig_usr', config.IG_USERNAME);
+app.set('ig_pwd', config.IG_PASSWORD);
 
 app.use(morgan('dev'));
 app.use(cors());

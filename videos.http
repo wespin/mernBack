@@ -32,3 +32,13 @@ Content-Type: application/json
     {    
         "title": "Deploy MERN Stack Application on Netlify & Render for NOT FREE"
     }
+
+
+###
+POST {{api}}/postInstagram
+Content-Type: application/json
+
+    {       
+      "url": "https://i.imgur.com/RF0V05S.jpg",
+      "caption": "buenas foto posteada By wespin"
+    }

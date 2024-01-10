@@ -1,5 +1,13 @@
 import { RequestHandler } from "express";
 import Video from "./Video";
+//import IgApiClient from 'instagram-private-api';
+//import reqPromise from "request-promise";
+import app from '../app'
+
+//const { IgApiClient } = require('instagram-private-api');
+//const { get } = require('request-promise');
+
+
 
 export const createVideo:RequestHandler = async (req, res) => {
     //res.json('creando videos..')
@@ -56,6 +64,51 @@ export const updateVideo: RequestHandler = async (req, res) => {
         const videoUpdated = await Video.findByIdAndUpdate(req.params.id, req.body);
 
         res.json(videoUpdated);
+    } catch (err) {
+        res.json('el error es ' +  err);
+    }
+};
+
+
+export const createPost: RequestHandler =  async (req, res) => {
+
+    try{
+   // res.json('creando Post de Instagram..1' + app.get('ig_usr') + app.get('ig_pwd') );
+    
+    const { IgApiClient } = require('instagram-private-api');
+    const { get } = require('request-promise');
+
+    const ig = new IgApiClient();
+
+    ig.state.generateDevice(app.get('ig_usr'));
+    const LogeadoIG = await ig.account.login(app.get('ig_usr'), app.get('ig_pwd'));
+
+    const imageBuffer = await get({
+        url: req.body.url,
+        encoding: null, 
+    });
+
+    await ig.publish.photo({
+        file: imageBuffer,
+        caption: req.body.caption,
+    });
+     
+    res.json(LogeadoIG);
+    /*
+        const ig = new IgApiClient();
+        ig.state.generateDevice(process.env.IG_USERNAME);
+        await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD);
+
+        const imageBuffer = await get({
+            url: 'https://i.imgur.com/BZBHsauh.jpg',
+            encoding: null, 
+        });
+
+        await ig.publish.photo({
+            file: imageBuffer,
+            caption: 'Really nice photo from the internet!',
+        });
+    */
     } catch (err) {
         res.json('el error es ' +  err);
     }

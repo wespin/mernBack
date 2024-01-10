@@ -13,4 +13,6 @@ router.delete('/videos/:id', videoController.deleteVideo);
 
 router.put('/videos/:id', videoController.updateVideo);
 
+router.post('/postInstagram', videoController.createPost);
+
 export default router;

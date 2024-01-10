@@ -8,5 +8,7 @@ export default{
     MONGO_USER: process.env.MONGO_USER || 'admin',
     MONGO_PASSWORD: process.env.MONGO_PASSWORD || 'admin',
     MONGO_HOST: process.env.HOST || 'localhost:27017',
-    PUERTO: process.env.PUERTO || 5000
+    PUERTO: process.env.PUERTO || 5000,
+    IG_USERNAME:process.env.IG_USERNAME || 'xxxx',
+    IG_PASSWORD:process.env.IG_PASSWORD || 'yyyy'
 }
