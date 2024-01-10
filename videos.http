@@ -1,0 +1,34 @@
+@api = http://localhost:3000
+
+GET {{api}}/videos
+
+###
+GET {{api}}/videos/659decde4e99164e6db2b1eb
+
+###
+POST {{api}}/videos
+Content-Type: application/json
+
+{
+  {
+    "title": "MERN STACK & Typescript (Mongodb, Express, React, Node con Typescript) - #1 Backend",
+    "description": "Curso capacitate",
+    "url": "https://www.youtube.com/watch?v=_RZ-T6TxP7w&t=23s"
+  },
+  {
+    "title": "Deploy MERN Stack Application on Netlify & Render for FREE",
+    "description": "como deployar",
+    "url": "https://www.youtube.com/watch?v=af3GDzsBWcY&t=673s"
+  }
+}
+
+###
+DELETE {{api}}/videos/659deadb0713326e26f7cbf3
+
+###
+PUT {{api}}/videos/659decde4e99164e6db2b1eb
+Content-Type: application/json
+
+    {    
+        "title": "Deploy MERN Stack Application on Netlify & Render for NOT FREE"
+    }
