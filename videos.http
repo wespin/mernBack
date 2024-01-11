@@ -39,6 +39,6 @@ POST {{api}}/postInstagram
 Content-Type: application/json
 
     {       
-      "url": "https://i.imgur.com/RF0V05S.jpg",
-      "caption": "buenas foto posteada By wespin"
+      "url": "https://i.imgur.com/mTo0blX.jpeg",
+      "caption": "prueba con nocturna"
     }
