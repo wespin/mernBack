@@ -1,6 +1,6 @@
 @api = http://localhost:3000
 
-GET {{api}}/videos
+GET https://mernback-p22z.onrender.com/videos
 
 ###
 GET {{api}}/videos/659decde4e99164e6db2b1eb
@@ -36,3 +36,9 @@ Content-Type: application/json
       "url": "https://i.imgur.com/mTo0blX.jpeg",
       "caption": "prueba con nocturna"
     }
+
+###
+GET {{api}}/getpostInstagram    
+
+###
+GET {{api}}/getInstagramReport    

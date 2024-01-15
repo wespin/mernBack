@@ -15,4 +15,9 @@ router.put('/videos/:id', videoController.updateVideo);
 
 router.post('/postInstagram', videoController.createPost);
 
+router.get('/getpostInstagram', videoController.getPostDetails);
+
+router.get('/getInstagramReport', videoController.createInstagramReport);
+
+
 export default router;

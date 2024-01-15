@@ -100,3 +100,63 @@ export const createPost: RequestHandler =  async (req, res) => {
         res.json('el error es ' +  err);
     }
 };
+
+
+export const getPostDetails:RequestHandler = async (req, res) => {
+    try {
+        const { IgApiClient } = require('instagram-private-api');
+        const { get } = require('request-promise');
+    
+        const ig = new IgApiClient();
+  
+        ig.state.generateDevice(app.get('ig_usr'));
+        const LogeadoIG = await ig.account.login(app.get('ig_usr'), app.get('ig_pwd'));
+  
+      // Retrieve post details using the media ID
+      const mediaDetails = await ig.media.info('3277396400328613191');
+  
+      console.log('Post Details:', mediaDetails);
+
+      return res.json(mediaDetails);
+
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+
+  export const  createInstagramReport:RequestHandler = async (req, res) => {
+    try {
+        const { IgApiClient } = require('instagram-private-api');
+        const { get } = require('request-promise');
+    
+        const ig = new IgApiClient();
+  
+        ig.state.generateDevice(app.get('ig_usr'));
+        const LogeadoIG = await ig.account.login(app.get('ig_usr'), app.get('ig_pwd'));
+  
+      // Fetch user details for the target account
+      const user = await ig.user.searchExact('bicireflexiones');
+      console.log('------------Profile Data---------------');
+    //  const profileData = await ig.account.getProfile();
+     //console.log(profileData);
+  
+      // Display the report
+     // console.log(`Report for bicireflexiones`);
+      console.log('-----------MEDIA DATA ITEMS----------------');
+      /*console.log(`Full Name: ${user.full_name}`);
+      console.log(`Username: ${user.username}`);
+      console.log(`Biography: ${user.biography}`);
+      console.log(`Followers: ${user.follower_count}`);
+      console.log(`Following: ${user.following_count}`);
+      console.log(`Total Posts: ${user.all_media_count}`);
+  */
+      const mediaData = await ig.feed.timeline(); // Get recent posts
+      console.log(mediaData.items); // This will log details of each post
+
+      return res.json(mediaData);
+
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
